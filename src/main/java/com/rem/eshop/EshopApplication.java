@@ -3,7 +3,6 @@ package com.rem.eshop;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
@@ -14,6 +13,7 @@ import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 @SpringBootApplication
@@ -26,10 +26,12 @@ public class EshopApplication {
 
 	@Bean
 	public Docket api() {
-		return new Docket(DocumentationType.SWAGGER_2).select()
-				.apis(RequestHandlerSelectors.basePackage("com.rem.eshop.controllers")).build()
-				.apiInfo(this.getApiInfo()).securitySchemes(this.securitySchemes())
-				.securityContexts(Arrays.asList(this.securityContext()));
+		return new Docket(DocumentationType.SWAGGER_2).select().paths(PathSelectors.ant("/api/*"))
+				.apis(RequestHandlerSelectors.basePackage("com.rem.eshop.controllers")).build().apiInfo(apiDetails());
+		/*
+		 * .apiInfo(this.getApiInfo()).securitySchemes(this.securitySchemes())
+		 * .securityContexts(Arrays.asList(this.securityContext()));
+		 */
 
 	}
 
@@ -52,15 +54,23 @@ public class EshopApplication {
 		);
 	}
 
-	private ApiInfo getApiInfo() {
-		Contact contact = new Contact("ECOFIN PRO PROJECT :: MINES-GAZ-ELECTRICITE", "https://ecofinpro.org",
-				"contact@ecofinpro.org");
-		return new ApiInfoBuilder()
-				.title("REST API FOR ECOFIN PRO PROJECT (FRONT END & BACK OFFICE :: MODULE MINES-GAZ-ELECTRICITE)")
-				.description(
-						"This page show all ressources that you could handle to communicate with database via REST API.")
-				.version("1.0").license("EcofinPro v.1.0").licenseUrl("http://www.apache.org/licenses/LICENSE-2.0")
-				.contact(contact).build();
+	/*
+	 * private ApiInfo getApiInfo() { Contact contact = new
+	 * Contact("ECOFIN PRO PROJECT :: MINES-GAZ-ELECTRICITE",
+	 * "https://ecofinpro.org", "contact@ecofinpro.org"); return new
+	 * ApiInfoBuilder()
+	 * .title("REST API FOR ECOFIN PRO PROJECT (FRONT END & BACK OFFICE :: MODULE MINES-GAZ-ELECTRICITE)"
+	 * ) .description(
+	 * "This page show all ressources that you could handle to communicate with database via REST API."
+	 * ) .version("1.0").license("EcofinPro v.1.0").licenseUrl(
+	 * "http://www.apache.org/licenses/LICENSE-2.0") .contact(contact).build(); }
+	 */
+
+	private ApiInfo apiDetails() {
+		return new ApiInfo("REST API FOR e-SHOPPING APPLICATION",
+				"REST API for e-shopping appication (built for fun with Spring boot)", "1.0", "Free to use",
+				new springfox.documentation.service.Contact("Rémi Kpadonou", "https://remikpadonou.herokuapp.com", ""),
+				"API License", "https://remikpadonou.herokuapp.com", Collections.emptyList());
 	}
 
 }
