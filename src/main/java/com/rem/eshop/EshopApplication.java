@@ -69,7 +69,8 @@ public class EshopApplication {
 	private ApiInfo apiDetails() {
 		return new ApiInfo("REST API FOR e-SHOPPING APPLICATION",
 				"REST API for e-shopping appication (built for fun with Spring boot)", "1.0", "Free to use",
-				new springfox.documentation.service.Contact("Rémi Kpadonou", "https://remikpadonou.herokuapp.com", ""),
+				new springfox.documentation.service.Contact("Rémi Kpadonou", "https://remikpadonou.herokuapp.com",
+						"rem.kpadonou@gmail.com"),
 				"API License", "https://remikpadonou.herokuapp.com", Collections.emptyList());
 	}
 
