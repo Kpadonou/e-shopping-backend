@@ -29,13 +29,13 @@ public class RoleController {
     }
 
     @PostMapping("/roles")
-    @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
+    // @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
     public Role createRole(@RequestBody Role role) {
         return roleRepository.save(role);
     }
 
     @DeleteMapping("/roles/{id}")
-    @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
+    // @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
     public StringResponseFormat deleteRole(@PathVariable Long id) {
         return roleRepository.findById(id).map(role -> {
             roleRepository.delete(role);
