@@ -67,11 +67,12 @@ public class EshopApplication {
 	 */
 
 	private ApiInfo apiDetails() {
-		return new ApiInfo("REST API FOR e-SHOPPING APPLICATION",
-				"REST API for e-shopping appication (built for fun with Spring boot)", "1.0", "Free to use",
-				new springfox.documentation.service.Contact("Rémi Kpadonou", "https://remikpadonou.herokuapp.com",
+		return new ApiInfo("E-SHOPPING REST API",
+				"This  project was a personal initiative where I skillfully designed and developed RESTful APIs using Java Spring Boot for essential e-commerce features, including Product Management, Cart and Checkout, Order Processing, User Profiles, and authentication. This project showcased my proficiency in independently building the backend infrastructure, integrating PostgreSQL as the relational database management system, and deploying the application Docker Compose.",
+				"1.0", "Free to use",
+				new springfox.documentation.service.Contact("Rémi KPADONOU", "https://rem-si.com",
 						"rem.kpadonou@gmail.com"),
-				"API License", "https://remikpadonou.herokuapp.com", Collections.emptyList());
+				"API License", "https://rem-si.com", Collections.emptyList());
 	}
 
 }
